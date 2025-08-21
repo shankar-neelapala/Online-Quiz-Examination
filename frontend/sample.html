@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Update Exam Schedule (No Backend)</title>
+  <script>
+    // Simulated database of schedules
+    const schedules = {
+      1: { subject: "Math", date: "2025-07-20", time: "10:00 AM", venue: "Room A1" },
+      2: { subject: "Physics", date: "2025-07-22", time: "1:00 PM", venue: "Room B2" }
+    };
+
+    function loadSchedule() {
+      const id = document.getElementById("scheduleId").value;
+      const schedule = schedules[id];
+      if (schedule) {
+        document.getElementById("subject").value = schedule.subject;
+        document.getElementById("date").value = schedule.date;
+        document.getElementById("time").value = schedule.time;
+        document.getElementById("venue").value = schedule.venue;
+        document.getElementById("status").textContent = "Schedule loaded. You can now edit.";
+      } else {
+        document.getElementById("status").textContent = "Schedule not found.";
+      }
+    }
+
+    function updateSchedule(event) {
+      event.preventDefault();
+
+      const id = document.getElementById("scheduleId").value;
+      if (!schedules[id]) {
+        alert("Cannot update. Schedule ID not found.");
+        return;
+      }
+
+      schedules[id] = {
+        subject: document.getElementById("subject").value,
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        venue: document.getElementById("venue").value
+      };
+
+      document.getElementById("status").textContent = "Schedule updated successfully!";
+      console.log("Updated Schedule:", schedules[id]);
+    }
+  </script>
+</head>
+<body>
+  <h2>Update Exam Schedule (Client-side only)</h2>
+
+  <label for="scheduleId">Enter Schedule ID:</label>
+  <input type="number" id="scheduleId" min="1" required>
+  <button type="button" onclick="loadSchedule()">Load Schedule</button>
+  <p id="status"></p>
+
+  <form onsubmit="updateSchedule(event)">
+    <label for="subject">Subject:</label><br>
+    <input type="text" id="subject" required><br><br>
+
+    <label for="date">Date:</label><br>
+    <input type="date" id="date" required><br><br>
+
+    <label for="time">Time:</label><br>
+    <input type="text" id="time" required><br><br>
+
+    <label for="venue">Venue:</label><br>
+    <input type="text" id="venue" required><br><br>
+
+    <button type="submit">Update Schedule</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+*create react app -> npm create vite@latest appname
+                  -> chooose react and then choose javascript
+                  -> Do the providing commands from commands
+
+*create spring app -> Go to 'start.spring.io'
+                   -> choose maven, java, choose latest springboot, jar, java latestversion
+                   -> choose dependencies spring web, spring boot dev tools
+                   -> then after make 'clean install' pom.xml in ecllipse
+
+*install bootstrap -> npm install react-bootstrap
+
+
+zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
+kafka-server-start.bat %KAFKA_HOME%\config\server.properties
+kafka-topics.bat --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+kafka-topics.bat --list --bootstrap-server localhost:9092
+kafka-console-producer.bat --topic test-topic --bootstrap-server localhost:9092
+kafka-console-consumer.bat --topic test-topic --bootstrap-server localhost:9092 --from-beginning
