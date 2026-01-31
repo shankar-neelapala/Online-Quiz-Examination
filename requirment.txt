@@ -1,3 +1,4 @@
+requirements:
 *create react app -> npm create vite@latest appname
                   -> chooose react and then choose javascript
                   -> Do the providing commands from commands
